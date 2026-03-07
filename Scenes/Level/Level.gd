@@ -4,7 +4,6 @@ extends Node2D
 @onready var walls_tiles: TileMapLayer = $TileLayers/Walls
 @onready var tile_layers: Node2D = $TileLayers
 @onready var camera: Camera2D = $Camera
-@onready var player: AnimatedSprite2D = $Player
 
 const SOURCE_ID=0
 
@@ -23,9 +22,11 @@ func _ready() -> void:
 func get_atlas_coord(tileType:TileLayers.LayerType)->Vector2i:
 	match(tileType):
 		TileLayers.LayerType.Floor:
-			return Vector2i(randi_range(3,8),0)
+			var x:int=randi_range(6,9)
+			var y:int=randi_range(0,2)
+			return Vector2i(x,y)
 		TileLayers.LayerType.Walls:
-			return Vector2i(2,0)
+			return Vector2i(randi_range(1,4),0)
 		_:
 			return Vector2i.ZERO
 
@@ -48,18 +49,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if _game_over:return
 
 
-func processPlayerInput(event:InputEvent)->Vector2i:
-	if event.is_action_pressed("ui_up"):
-		return Vector2i.UP
-	elif event.is_action_pressed("ui_down"):
-		return Vector2i.DOWN
-	elif event.is_action_pressed("ui_left"):
-		player.flip_h=true
-		return Vector2i.LEFT
-	elif event.is_action_pressed("ui_right"):
-		player.flip_h=false
-		return Vector2i.RIGHT
-	return Vector2.ZERO
 
 
 
