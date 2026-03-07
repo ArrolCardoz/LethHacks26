@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="LethHacks26"
+run/main_scene="uid://csitlw0r2ybup"
+config/features=PackedStringArray("4.6", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*uid://7wlngk4swxmw"
+LevelData="*uid://wijyxjbdhk2w"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
+
+[editor]
+
+naming/node_name_num_separator=2
+naming/scene_name_casing=1
+naming/script_name_casing=1
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Globals/": "orange",
+"res://Resources/": "yellow",
+"res://Scenes/": "green"
+}
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"
