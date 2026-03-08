@@ -3,7 +3,8 @@ extends Node
 const LEVEL_DATA_PATH_START:String="res://Data/level_data"
 const LEVEL_DATA_PATH_END:String=".txt"
 const NUM_OF_LEVELS:int=2  #hard coded need to change after competition
-
+#hard code random data because almost out of time
+var removeWalls:Array[int]= [3,6]
 
 var _level_data:Dictionary={}
 
@@ -41,4 +42,8 @@ func load_level_data()->void:
 		_level_data[n] = setup_level(file)
 
 func get_level_data(levelNum:int)->LevelLayout:
+	var temp:LevelLayout=_level_data[levelNum]
+	temp.clearImmovableWalls()
+	for n in range(removeWalls[levelNum-1]):
+		temp.pick_random()
 	return _level_data[levelNum]

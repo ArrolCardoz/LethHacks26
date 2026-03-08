@@ -2,8 +2,11 @@ extends Node2D
 
 @onready var floor_tiles: TileMapLayer = $TileLayers/Floor
 @onready var walls_tiles: TileMapLayer = $TileLayers/Walls
+@onready var walls_and_immovable_walls: TileMapLayer = $TileLayers/WallsAndImmovableWalls
+@onready var immovable_walls: TileMapLayer = $TileLayers/ImmovableWalls
 @onready var tile_layers: Node2D = $TileLayers
 @onready var camera: Camera2D = $Camera
+
 
 const SOURCE_ID=0
 
@@ -14,11 +17,14 @@ var _level_num:int=9999
 var _moves_made:int=0
 
 
+
 func _ready() -> void:
 	_tile_size=floor_tiles.tile_set.tile_size.x
+	walls_and_immovable_walls.clear()
 	setup_level()
 
 func get_atlas_coord(tileType:TileLayers.LayerType)->Vector2i:
+	print(tileType)
 	match(tileType):
 		TileLayers.LayerType.Floor:
 			var x:int=randi_range(6,9)
@@ -26,6 +32,8 @@ func get_atlas_coord(tileType:TileLayers.LayerType)->Vector2i:
 			return Vector2i(x,y)
 		TileLayers.LayerType.Walls:
 			return Vector2i(randi_range(1,4),0)
+		TileLayers.LayerType.ImmovableWalls:
+			return Vector2i(randi_range(1,4),1)
 		_:
 			return Vector2i.ZERO
 
@@ -55,8 +63,12 @@ func setup_level()->void:
 	var level_layout:LevelLayout=LevelData.get_level_data(_level_num)
 	for TileLaysChildern in tile_layers.get_children():
 		TileLaysChildern.clear()
+
 	setup_layer(TileLayers.LayerType.Floor,floor_tiles,level_layout)
 	setup_layer(TileLayers.LayerType.Walls,walls_tiles,level_layout)
+	setup_layer(TileLayers.LayerType.ImmovableWalls,immovable_walls,level_layout)
+	setup_layer(TileLayers.LayerType.Walls,walls_and_immovable_walls,level_layout)
+	setup_layer(TileLayers.LayerType.ImmovableWalls,walls_and_immovable_walls,level_layout)
 	setupCam(floor_tiles)
 	#game_ui.incrementMoves(_moves_made)
 

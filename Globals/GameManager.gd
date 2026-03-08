@@ -4,7 +4,7 @@ const LEVEL = preload("res://Scenes/Level/Level.tscn")
 const MAIN = preload("res://Scenes/Main/Main.tscn")
 
 
-var _level_selected:int=2
+var _level_selected:int=1
 
 
 func load_main_scene()->void:

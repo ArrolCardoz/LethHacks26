@@ -1,21 +1,28 @@
 class_name TileLayers
 
 
-enum LayerType { Floor, Walls}
+enum LayerType { Floor, Walls, ImmovableWalls}
 
 
 var _floor: Array[Vector2i]
 var _wall: Array[Vector2i]
+var _immovable_wall: Array[Vector2i]
 
 
 var _layer_coords: Dictionary = {
 	LayerType.Floor: _floor,
 	LayerType.Walls: _wall,
+	LayerType.ImmovableWalls: _immovable_wall
 }
-
+func clearImmovableWalls():
+	_immovable_wall.clear()
 
 func add_coord(coord: Vector2i, lt: LayerType) -> void:
 	_layer_coords[lt].push_back(coord)
+	pass
+
+func remove_coord(coord: Vector2i, lt: LayerType) -> void:
+	_layer_coords[lt].erase(coord)
 	pass
 
 

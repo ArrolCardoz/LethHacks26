@@ -3,6 +3,8 @@ class_name ComputeArea
 
 @export var _wall_tile_map_layer:TileMapLayer
 
+
+
 func _ready() -> void:
 	SignalHub.connect("compute_area",compute_area)
 
@@ -50,6 +52,5 @@ func compute_area() -> bool:
 	print(rect.size.x)
 	print(rect.size.y)
 	print(area)
-
 
 	return area
