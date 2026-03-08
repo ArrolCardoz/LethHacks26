@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2l0hsolcnrnx"]
+
+[ext_resource type="Script" uid="uid://im2dfcxk6542" path="res://Scenes/ComputeArea/ComputeArea.gd" id="1_hhnyg"]
+
+[node name="ComputeArea" type="Node2D" unique_id=2115531318]
+script = ExtResource("1_hhnyg")

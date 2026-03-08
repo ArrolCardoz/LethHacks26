@@ -45,14 +45,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		GameManager.load_main_scene()
 	elif event.is_action_pressed("Reload"):
 		get_tree().reload_current_scene()
+	elif event.is_action_pressed("Submit"):
+		SignalHub.emit_compute_area()
 	if _game_over:return
-
-
-
-
-
-func cellIsWall(playerPos:Vector2i)->bool:
-	return playerPos in walls_tiles.get_used_cells()
 
 
 func setup_level()->void:
