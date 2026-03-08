@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://sjbchjaov0ln" path="res://Scenes/Level/Level.gd" id="1_3hkb6"]
 [ext_resource type="TileSet" uid="uid://16wk8oqt0a1j" path="res://Resources/tile_set.tres" id="2_3hkb6"]
+[ext_resource type="Script" uid="uid://bhip1jhfkl7bh" path="res://Scenes/AddAndRemoveNode/AddAndRemoveTile.gd" id="3_4dwx7"]
 
 [node name="Level" type="Node2D" unique_id=1579809382]
 script = ExtResource("1_3hkb6")
@@ -32,3 +33,8 @@ tile_set = ExtResource("2_3hkb6")
 zoom = Vector2(3, 3)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1103622014]
+
+[node name="AddAndRemoveTile" type="Node2D" parent="." unique_id=1108073568 node_paths=PackedStringArray("_tile_map_layer")]
+script = ExtResource("3_4dwx7")
+_tile_map_layer = NodePath("../TileLayers/Walls")
+metadata/_custom_type_script = "uid://bhip1jhfkl7bh"

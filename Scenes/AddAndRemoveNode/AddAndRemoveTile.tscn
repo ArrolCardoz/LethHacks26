@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kcnm8onmawys"]
+
+[ext_resource type="Script" uid="uid://bhip1jhfkl7bh" path="res://Scenes/AddAndRemoveNode/AddAndRemoveTile.gd" id="1_s04yg"]
+
+[node name="AddAndRemoveTile" type="Node2D" unique_id=195891948]
+script = ExtResource("1_s04yg")
