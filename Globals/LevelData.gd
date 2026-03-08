@@ -2,7 +2,7 @@ extends Node
 
 const LEVEL_DATA_PATH_START:String="res://Data/level_data"
 const LEVEL_DATA_PATH_END:String=".txt"
-const NUM_OF_LEVELS:int=1  #hard coded need to change after competition
+const NUM_OF_LEVELS:int=2  #hard coded need to change after competition
 
 
 var _level_data:Dictionary={}
@@ -27,6 +27,7 @@ func setup_level(file:FileAccess):
 				"p":
 					layout.add_tile_to_layer(x, y, TileLayers.LayerType.Floor)
 					layout.set_player_start(x, y)
+		y+=1
 	return layout
 
 

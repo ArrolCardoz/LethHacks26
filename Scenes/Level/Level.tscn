@@ -29,6 +29,6 @@ tile_map_data = PackedByteArray("AAAHAAgAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAA
 tile_set = ExtResource("2_3hkb6")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1694555007]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(3, 3)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1103622014]

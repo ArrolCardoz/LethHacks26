@@ -16,7 +16,6 @@ var _moves_made:int=0
 
 func _ready() -> void:
 	_tile_size=floor_tiles.tile_set.tile_size.x
-	print(GameManager._level_selected)
 	setup_level()
 
 func get_atlas_coord(tileType:TileLayers.LayerType)->Vector2i:
