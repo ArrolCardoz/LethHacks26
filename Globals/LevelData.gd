@@ -4,8 +4,8 @@ const LEVEL_DATA_PATH_START:String="res://Data/level_data"
 const LEVEL_DATA_PATH_END:String=".txt"
 const NUM_OF_LEVELS:int=2  #hard coded need to change after competition
 #hard code random data because almost out of time
-var immovableWalls:Array[int]= [3,6]
-var removeWalls:Array[int]= [3,6]
+var immovableWalls:Array[int]= [2,6]
+var removeWalls:Array[int]= [3,12]
 
 var _level_data:Dictionary={}
 
@@ -52,6 +52,9 @@ func reset_level_data(levelNum:int):
 func get_level_data(levelNum:int)->LevelLayout:
 	var temp:LevelLayout=_level_data[levelNum]
 	temp.clearImmovableWalls()
+	for n in range(removeWalls[levelNum-1]):
+		temp.pick_random(TileLayers.LayerType.NULL)
 	for n in range(immovableWalls[levelNum-1]):
-		temp.pick_random()
+		temp.pick_random(TileLayers.LayerType.ImmovableWalls)
+
 	return _level_data[levelNum]

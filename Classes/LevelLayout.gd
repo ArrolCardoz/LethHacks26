@@ -15,11 +15,11 @@ func get_tiles_for_layer(lt: TileLayers.LayerType) -> Array[Vector2i]:
 func clearImmovableWalls():
 	_tile_layers.clearImmovableWalls()
 
-func pick_random() -> void:
+func pick_random(TileType:TileLayers.LayerType) -> void:
 	var wallLayer: Array[Vector2i]= _tile_layers.get_tiles_for_layer(TileLayers.LayerType.Walls)
 	var size = wallLayer.size()
 	var random_key = wallLayer[randi() % size]
 	print(wallLayer)
 	wallLayer.erase(random_key)
 	print(wallLayer)
-	_tile_layers.add_coord(random_key, TileLayers.LayerType.ImmovableWalls)
+	_tile_layers.add_coord(random_key, TileType)
