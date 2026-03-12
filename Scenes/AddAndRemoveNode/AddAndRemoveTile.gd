@@ -25,12 +25,13 @@ func _input(event: InputEvent) -> void:
 			_tile_map_layer_both.set_cell(cell_pos,-1)
 
 		else:
-			if !_num_of_tiles and _tile_map_layer_immoveable_wall.get_cell_source_id(cell_pos)!= TILE_MAP_IS_EMPTY:
+			if _num_of_tiles<1 or _tile_map_layer_immoveable_wall.get_cell_source_id(cell_pos)!= TILE_MAP_IS_EMPTY:
 				return
 			var atlas_coords:Vector2i=Vector2i(randi_range(1,4),0)
 			_tile_map_layer_wall.set_cell(cell_pos,SOURCE_ID,atlas_coords)
 			_tile_map_layer_both.set_cell(cell_pos,SOURCE_ID,atlas_coords)
 			_num_of_tiles-=1
+	print(_num_of_tiles)
 
 func set_num_of_tiles(n:int)->void:
 	_num_of_tiles=n

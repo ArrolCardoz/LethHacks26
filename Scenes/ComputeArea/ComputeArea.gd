@@ -14,11 +14,9 @@ func compute_area() -> bool:
 
 	var rect = _wall_tile_map_layer.get_used_rect()
 	# expand bounds so we start outside the walls
-	print(rect.position)
 
 	rect.position -= Vector2i.ONE
 	rect.size += Vector2i(2,2)
-	print(rect.position)
 	var visited = {}
 	var queue = [rect.position]
 
@@ -48,9 +46,6 @@ func compute_area() -> bool:
 			if _wall_tile_map_layer.get_cell_source_id(pos) == -1 and !visited.has(pos):
 				area += 1
 	rect.size -= Vector2i(2,2)
-	print((rect.size.x*rect.size.y)-queue.size())
-	print(rect.size.x)
-	print(rect.size.y)
 	print(area)
 
 	return area

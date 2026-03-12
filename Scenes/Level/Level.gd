@@ -13,18 +13,18 @@ const SOURCE_ID=0
 var _tile_size:int=0
 var _player_position=Vector2i.ZERO
 var _game_over:bool=false
-var _level_num:int=9999
+var _level_num:int=1
 var _moves_made:int=0
 
 
 
 func _ready() -> void:
+	LevelData.reset_level_data(_level_num)
 	_tile_size=floor_tiles.tile_set.tile_size.x
 	walls_and_immovable_walls.clear()
 	setup_level()
 
 func get_atlas_coord(tileType:TileLayers.LayerType)->Vector2i:
-	print(tileType)
 	match(tileType):
 		TileLayers.LayerType.Floor:
 			var x:int=randi_range(6,9)
@@ -52,6 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Escape"):
 		GameManager.load_main_scene()
 	elif event.is_action_pressed("Reload"):
+		LevelData.reset_level_data(_level_num)
 		get_tree().reload_current_scene()
 	elif event.is_action_pressed("Submit"):
 		SignalHub.emit_compute_area()
